@@ -1,7 +1,7 @@
 import time
 import pytest
 from selenium import webdriver
-# from pages.login_page import LoginPage
+from pages.login_page import LoginPage
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -11,13 +11,21 @@ from selenium.webdriver.support.wait import WebDriverWait
 def browser(request):
     browser = webdriver.Chrome()
     print("\n! ! ! start browser ! ! !")
-    link = 'https://sea.softline.com.khoroshunovet.stage.slweb.cloud/licensing-center/agreements'
-    # page_login = LoginPage(browser, link)
-    # page_login.open()
-    # page_login.authorization(login='lodevi5142@offsala.com', password='123456')
-    browser.get(link)
-    time.sleep(0)
 
     yield browser
+
     print("\n! ! ! quit browser ! ! !")
     browser.quit()
+
+
+# авторизация под неактивным юзером
+@pytest.fixture(scope="session")
+def not_active_user(browser):
+    link = 'https://sea.softline.com.khoroshunovet.stage.slweb.cloud/licensing-center'
+    page_login = LoginPage(browser, link)
+    page_login.open()
+    time.sleep(3)
+    page_login.authorization(login='sigabe7254@weirby.com', password='sigabe7254@weirby.com')
+    time.sleep(3)
+
+    yield browser

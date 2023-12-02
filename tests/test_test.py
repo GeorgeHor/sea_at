@@ -1,11 +1,6 @@
 # from pages.dashboard_page import DashboardPage
-
-def test_first(browser):
-    pass
+import time
 
 
-def test_second(browser):
-    pass
-
-def test_third(browser):
+def test_first23(not_active_user):
     pass
