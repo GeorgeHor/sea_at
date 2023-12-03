@@ -2,12 +2,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 from locators import LoginPageSSOLocators
+from selenium import webdriver
+
 
 
 class LoginPage(BasePage):
     # проверка нахождения инпута логина на странице
     def should_be_login_input(self):
-        assert self.is_element_present(*LoginPageSSOLocators.AUTH_LOGIN_SSO), "Форма ввода логина не представлена на странице"
+        assert self.is_element_present(*LoginPageSSOLocators.AUTH_LOGIN_SSO), \
+            "Форма ввода логина не представлена на странице"
 
     # Ввод данных в инпуты и клик по кнопке для авторизации
     def authorization(self, login, password):

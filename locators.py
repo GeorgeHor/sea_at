@@ -1,4 +1,7 @@
 from selenium.webdriver.common.by import By
+from selenium import webdriver
+
+
 
 
 class LoginPageSSOLocators:
@@ -11,3 +14,9 @@ class LoginPageSSOLocators:
 class DashboardPageLocators:
     COOKIEBOT_DIALOG_DENY_BUTTON = By.CSS_SELECTOR, "#CybotCookiebotDialogBodyButtonDecline"
     H1_HEADER = By.CSS_SELECTOR, ".ds-header_h1"
+    ALL_DATE_BUTTON = By.CSS_SELECTOR, "a[href='/licensing-center/calendar'] .s-text-element"
+    AGREEMENTS_BUTTON = By.CSS_SELECTOR, "a[href='/licensing-center/agreements'] .s-text-element"
+    FULFILLMENT_BUTTON = By.CSS_SELECTOR, "a[href = '/licensing-center/fulfillment'].s - text - element"
+
+class SetupInProgressPageLocators():
+    SEA_PAGE_SETUP = By.CSS_SELECTOR, ".c-status-window__title"
