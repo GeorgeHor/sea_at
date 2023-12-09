@@ -12,7 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 def browser(request):
     browser = webdriver.Chrome()
     print("\n! ! ! start browser ! ! !")
-
+    browser.maximize_window()
     yield browser
 
     print("\n! ! ! quit browser ! ! !")
