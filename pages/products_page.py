@@ -21,12 +21,11 @@ class ProductsPage(BasePage):
         WebDriverWait(self.browser, 10).until(
             EC.element_to_be_clickable(ProductsPageLocators.BY_BUTTON)
         )
-        self.logger.info("Проверка кликабельности кнопки")
         assert EC.element_to_be_clickable(ProductsPageLocators.BY_BUTTON)
 
     def click_to_all_products(self):
         self.logger.info("Ожидание кликабельности кнопки 'Все продукты'")
-        WebDriverWait(self.browser, 10).until(
+        WebDriverWait(self.browser, 15).until(
             EC.element_to_be_clickable(DashboardPageLocators.PRODUCTS_BUTTON)
         )
         self.browser.find_element(*DashboardPageLocators.PRODUCTS_BUTTON).click()
@@ -45,5 +44,21 @@ class ProductsPage(BasePage):
         # Кликаем по нужной кнопке
         self.browser.find_element(*ProductsPageLocators.BY_BUTTON).click()
 
+    def check_validation_an_empty_products_form(self):
+        self.logger.info('Проверка текста заголовка')
+        WebDriverWait(self.browser, 10).until(
+            EC.text_to_be_present_in_element(ProductsPageLocators.PURCHASE_REQUEST_BUTTON, 'Заявка на закупку'),
+            "Заголовок формы не имеет тектс 'Заявка на закупку'"
+        )
+        WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable(ProductsPageLocators.SEND_BUTTON)
+        )
+        self.logger.info("Клик по кнопке Отправить")
+        self.browser.find_element(*ProductsPageLocators.SEND_BUTTON).click()
 
-    # def send_a_purchase_request(self):
+        self.logger.info("Получаем текст и цвет валидации")
+        #Ожидание сообщения о валидации
+        WebDriverWait(self.browser, 10).until(
+            EC.presence_of_element_located(ProductsPageLocators.MESSAGE_VALIDATION)
+        )
+        assert EC.presence_of_element_located(ProductsPageLocators.MESSAGE_VALIDATION), "Нет сообщения о валдиации 'Обязательное поле'"

@@ -27,4 +27,6 @@ class SetupInProgressPageLocators():
 class ProductsPageLocators:
     BY_BUTTON = By.CSS_SELECTOR, ".layout-with-sidebar-container__header button.s-button" #именно сама кнопка
     BY_BUTTON_TEXT = By.CSS_SELECTOR, ".layout-with-sidebar-container__header button.s-button .s-text-element"#для поиска текста
-
+    PURCHASE_REQUEST_BUTTON = By.CSS_SELECTOR, ".s-header_h1"
+    SEND_BUTTON = By.CSS_SELECTOR, ".layout-without-toolbar-control-block_right button.s-button_variant-filled .s-text-element" #Кнпока Отправить на форме
+    MESSAGE_VALIDATION = By.XPATH, "(//*[text()='Обязательное поле'])[position()=1]"

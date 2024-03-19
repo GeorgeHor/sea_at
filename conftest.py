@@ -36,6 +36,17 @@ def active_user(browser):
     link = 'https://sea.softline.com.khoroshunovet.stage.slweb.cloud/licensing-center'
     page_login = LoginPage(browser, link)
     page_login.open()
-    # time.sleep(3)
-    page_login.authorization(login='dayaw69456@htoal.com', password='dayaw69456@htoal.com')
+    time.sleep(3)
+    page_login.authorization(login='jitab97068@fryshare.com', password='jitab97068@fryshare.com')
     yield browser
+
+
+
+# @pytest.fixture(scope="function")
+# def record_video():
+#     # Логика для создания видео с использованием manim
+#     # Например, создание анимации и запись видео
+#     scene = TestAnimation()
+#     scene.render()
+#
+#     yield

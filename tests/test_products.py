@@ -9,4 +9,5 @@ def test_products(active_user):
     page_products.click_to_all_products()
     page_products.should_be_bybutton()
     page_products.click_to_bybutton()
-    time.sleep(3)
+    page_products.check_validation_an_empty_products_form()
+    time.sleep(15)

@@ -11,19 +11,33 @@ import logging
 
 class BasePage:
 
+    # def __init__(self, browser, url):
+    #     self.browser = browser
+    #     self.url = url
+    #     self.logger = logging.getLogger(__name__)
+    #
+    #     # Настройка обработчика для логирования
+    #     self.logger.setLevel(logging.INFO)  # Установка уровня логирования
+    #     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    #
+    #     # Настройка обработчика для вывода в консоль
+    #     console_handler = logging.StreamHandler()
+    #     console_handler.setFormatter(formatter)
+    #     self.logger.addHandler(console_handler)
+
     def __init__(self, browser, url):
         self.browser = browser
         self.url = url
         self.logger = logging.getLogger(__name__)
 
-        # Настройка обработчика для логирования
-        self.logger.setLevel(logging.INFO)  # Установка уровня логирования
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        if not self.logger.handlers:  # Добавить обработчик только если его нет
+            self.logger.setLevel(logging.INFO)  # Установка уровня логирования
+            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-        # Настройка обработчика для вывода в консоль
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(formatter)
-        self.logger.addHandler(console_handler)
+            # Настройка обработчика для вывода в консоль
+            console_handler = logging.StreamHandler()
+            console_handler.setFormatter(formatter)
+            self.logger.addHandler(console_handler)
 
     def open(self):
         self.browser.get(self.url)
