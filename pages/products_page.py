@@ -56,7 +56,7 @@ class ProductsPage(BasePage):
         self.logger.info("Клик по кнопке Отправить")
         self.browser.find_element(*ProductsPageLocators.SEND_BUTTON).click()
 
-        self.logger.info("Получаем текст и цвет валидации")
+        self.logger.info("Получаем текст")
         #Ожидание сообщения о валидации
         WebDriverWait(self.browser, 10).until(
             EC.presence_of_element_located(ProductsPageLocators.MESSAGE_VALIDATION)
