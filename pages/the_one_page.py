@@ -14,9 +14,10 @@ class SetupInProgressPage(BasePage):
     # проверка надписи о настройке кабинета
     def setup_in_progress_page(self):
         #Ожидание нужного заголовка
-        WebDriverWait(self.browser, 7).until(
-            EC.presence_of_element_located(SetupInProgressPageLocators.SEA_PAGE_SETUP)
-        )
+        self.wait_for_element_presence(SetupInProgressPageLocators.SEA_PAGE_SETUP)
+        # WebDriverWait(self.browser, 7).until(
+        #     EC.presence_of_element_located(SetupInProgressPageLocators.SEA_PAGE_SETUP)
+        # )
 
         # находим нужный заголовок и вытаскиваем из него текст
         test_123 = self.browser.find_element(*SetupInProgressPageLocators.SEA_PAGE_SETUP)

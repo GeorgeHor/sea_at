@@ -2,13 +2,9 @@ import time
 import pytest
 from selenium import webdriver
 from pages.login_page import LoginPage
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
 
-# @pytest.fixture(scope="function")
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def browser(request):
     browser = webdriver.Chrome()
     print("\n! ! ! start browser ! ! !")
@@ -20,7 +16,7 @@ def browser(request):
 
 
 # авторизация под неактивным юзером id=53
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def not_active_user(browser):
     link = 'https://sea.softline.com.khoroshunovet.stage.slweb.cloud/licensing-center'
     page_login = LoginPage(browser, link)
@@ -31,7 +27,7 @@ def not_active_user(browser):
 
 
 # авторизация под активным юзером id = 44
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def active_user(browser):
     link = 'https://sea.softline.com.khoroshunovet.stage.slweb.cloud/licensing-center'
     page_login = LoginPage(browser, link)
@@ -41,12 +37,3 @@ def active_user(browser):
     yield browser
 
 
-
-# @pytest.fixture(scope="function")
-# def record_video():
-#     # Логика для создания видео с использованием manim
-#     # Например, создание анимации и запись видео
-#     scene = TestAnimation()
-#     scene.render()
-#
-#     yield
